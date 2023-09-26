@@ -1,0 +1,4 @@
+Django==4.2.5
+channels==4.0.0  # For real-time chat using Django Channels
+Pillow==10.0.1  # For image file handling
+python-dateutil==2.8.2  # For date and time handling
