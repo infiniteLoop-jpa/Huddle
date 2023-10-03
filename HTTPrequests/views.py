@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+# Create your views here - Julia
 import requests
 from django.http import HttpResponse
 
@@ -19,3 +19,4 @@ def fetch_and_print_web_page(request):
             return HttpResponse(f"Failed to retrieve data. Status code: {response.status_code}")
     except Exception as e:
         return HttpResponse(f"An error occurred: {str(e)}")
+
