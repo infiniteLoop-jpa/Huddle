@@ -2,7 +2,7 @@ from django.shortcuts import render
 from datetime import datetime
 import pytz
 
-# A4 part 2 assignment
+# A4 part 2 assignment - pablo duenas
 def show_time(request):
     # Define the time zones you want to display
     timezone1 = pytz.timezone('Europe/London')
