@@ -2,6 +2,7 @@ Django==4.2.5
 channels==4.0.0  # For real-time chat using Django Channels
 Pillow==10.0.1  # For image file handling
 python-dateutil==2.8.2  # For date and time handling
-django-guardian-2.4.0 # For authorizing permission for users
-django-allauth-0.57.0 # Provides for user authentication
-pandas == 2.8.2        # Data Manipulation
+django-guardian==2.4.0 # For authorizing permission for users
+django-allauth==0.57.0 # Provides for user authentication
+pandas==2.1.1        # Data Manipulation
+requests==2.26.0    # Making HTTPS requests
