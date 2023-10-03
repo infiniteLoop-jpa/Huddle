@@ -10,7 +10,7 @@ def image_manipulation(request):
     draw = ImageDraw.Draw(image)
 
     # Perform some manipulation (e.g., add text)
-    draw.text((10, 10), "Hello, Alondra!", fill=(255, 0, 0))
+    draw.text((10, 10), "Hello, Alondra Marin!", fill=(255, 0, 0))
 
     # Save the modified image to a response
     response = HttpResponse(content_type='image/jpeg')
