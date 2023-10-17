@@ -3,10 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Pablo Duenas</title>
-        <link rel="stylesheet" href="style.css">
+        <title>Huddle|Home</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style.css' %}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-        <script src="script.js"></script>
+        <script src="{% static 'script.js' %}"></script>
     </head>
     <body>
       <div class="home-content has-background-light">
@@ -48,7 +49,7 @@
               <div class="card">
                 <div class="card-image">
                   <figure class="image">
-                    <img src="huddle_default.png" alt="default huddle photo">
+                    <img src="{% static 'huddle_default.png' %}" alt="default huddle photo">
                   </figure>
                 </div>
                 <div class="card-content card-content-size">
@@ -65,7 +66,7 @@
               <div class="card">
                 <div class="card-image">
                   <figure class="image">
-                    <img src="huddle_default.png" alt="default huddle photo">
+                    <img src="{% static 'huddle_default.png' %}" alt="default huddle photo">
                   </figure>
                 </div>
                 <div class="card-content">
