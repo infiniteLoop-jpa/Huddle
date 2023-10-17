@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Huddle|Home</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <script src="{% static 'script.js' %}"></script>
+    </head>
+    <body>
+      <div class="home-content has-background-light">
+        <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a class="navbar-item huddle-logo" href="">
+              <!-- <img src="" width="" height="" alt="Huddle Logo"> -->
+              Huddle
+            </a>
+        
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+        
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end pr-5">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-info">
+                    <strong>Sign up</strong>
+                  </a>
+                  <a class="button is-info is-light">
+                    Log in
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="container is-max-desktop">
+          <div class="columns is-multiline is-vcentered pt-6">
+            <div class="column is-one-third">
+              <button class="add-huddle-button is-outlined js-modal-trigger" data-target="modal-create-huddle">+</button>
+            </div>            
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="{% static 'huddle_default.png' %}" alt="default huddle photo">
+                  </figure>
+                </div>
+                <div class="card-content card-content-size">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">CS 4800</p>
+                      <p class="subtitle is-6">Software Engineering project</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="{% static 'huddle_default.png' %}" alt="default huddle photo">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">CS4200 Project</p>
+                      <p class="subtitle is-6">Artificial Intelligence Final</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="modal-create-huddle" class="modal">
+            <div class="modal-background"></div>
+              <div class="modal-card">
+                <header class="modal-card-head">
+                  <p class="modal-card-title">Create Huddle</p>
+                  <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                  <div class="field">
+                    <label class="label">Name</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="Los Broncos">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Short Description</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="Final project for CS 2400">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Members</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="Username or email address">
+                    </div>
+                  </div>
+                </section>
+                <footer class="modal-card-foot">
+                  <button class="button is-info">Create Huddle</button>
+                  <button class="button is-outlined is-info">Cancel</button>
+                </footer>
+              </div>
+          
+            <button class="modal-close is-large" aria-label="close"></button>
+          </div>
+        </div>        
+      </div>
+    </body>
+</html>

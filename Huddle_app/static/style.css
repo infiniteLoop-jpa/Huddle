@@ -1,0 +1,102 @@
+.home-content {
+    height: 300vh;
+}
+
+.add-huddle-button {
+    width: 300px;
+    height: 215px;
+}
+
+.huddle-logo {
+    font-size: 25px;
+    font-weight: bold;
+    width: 13rem;
+    justify-content: center;
+}
+
+/* this is css code for huddle_page.html */
+
+.huddle-nav {
+    max-width: 13rem;
+    width: 13rem;
+    background-color: #fbfbfb;
+    height: 100vh;
+    position: fixed;
+}
+
+.huddle-nav-categories {
+    padding-top: 1rem;
+
+    padding-bottom: 1rem;
+    
+}
+
+.huddle-page {
+    padding-top: 55px;
+}
+
+.huddle-tab {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-align: center;
+    
+}
+
+.huddle-tab-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000033;
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    background-color: #dce9fa;
+}
+
+.huddle-tab-name:hover {
+    background-color: #24427b; 
+    color: white;
+}
+
+.huddle-group-name {
+    font-weight: bold;
+    padding-left: 15px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+
+.huddle-name-box {
+    background-color: #24427b; 
+    color: white;
+}
+
+.huddle-group-img {
+    height: 5.25rem;
+    width: 13rem;
+}
+
+.huddle-tab-body {
+    margin-left: 13rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 2rem;
+}
+.chat-container {
+    
+    height: 800px;
+    overflow-y: auto;
+}
+
+.chat-input {
+    bottom: 0;
+    position: fixed;
+    display: flex;
+    padding-bottom: 30px;
+    width: 78%;
+}
+
+.chat-input .input {
+    flex: 1;
+    padding-left: 10px;
+}
