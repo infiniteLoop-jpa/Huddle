@@ -54,7 +54,7 @@ ROOT_URLCONF = "Huddle.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ['/Users/juliaybanez/Desktop/Huddle/Huddle_app/templates'],
+        "DIRS": ['Huddle_app/templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
