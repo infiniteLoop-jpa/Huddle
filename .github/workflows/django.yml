@@ -13,7 +13,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.7, 3.8, 3.9]
+        python-version: [3.9.16]
 
     steps:
     - uses: actions/checkout@v3
@@ -28,3 +28,22 @@ jobs:
     - name: Run Tests
       run: |
         python manage.py test
+      - name: Copy Django project files to EC2 via SSH Key
+      uses: appleboy/scp-action@master
+      with:
+        host:  ec2-54-177-56-172.us-west-1.compute.amazonaws.com
+        username: ec2-user
+        port: 22
+        key: ${{ secrets.KEY }}
+        source: "target/Huddle"
+        target: "~/" 
+    - name: Run commands to start the Django server
+      uses: appleboy/ssh-action@v0.1.9
+      with:
+        host:  ec2-54-177-56-172.us-west-1.compute.amazonaws.com
+        username: ec2-user
+        key: ${{ secrets.KEY }}
+        port: 22
+        script: |
+          cd /home/ec2-user/Huddle
+          nohup python3 manage.py runserver 0.0.0.0:8080 > log.txt &
