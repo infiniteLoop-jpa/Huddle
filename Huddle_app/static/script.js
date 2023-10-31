@@ -40,3 +40,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+
+  function createCardFromForm() {
+    const form = document.getElementById('createHuddleForm');
+    const cardContainer = document.getElementById('cardContainer');
+    
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        
+        const huddleName = form.elements.huddleName.value;
+
+        // Create a card from the template
+        const cardTemplate = document.querySelector('.card-template');
+        const newCard = cardTemplate.cloneNode(true);
+        newCard.style.display = ''; // Show the new card
+
+        // Update the content of the new card with the submitted data
+        newCard.querySelector('.card-title').textContent = huddleName;
+
+        // Append the new card to the main page
+        cardContainer.appendChild(newCard);
+
+        closeAllModals();
+    });
+  }

@@ -44,6 +44,9 @@
           <div class="columns is-multiline is-vcentered pt-6">
             <div class="column is-one-third">
               <button class="add-huddle-button is-outlined js-modal-trigger" data-target="modal-create-huddle">+</button>
+            </div>
+            <div id="cardContainer">
+
             </div>            
             <div class="column is-one-third">
               <div class="card">
@@ -56,7 +59,7 @@
                   <div class="media">
                     <div class="media-content">
                       <p class="title is-4">CS 4800</p>
-                      <p class="subtitle is-6">Software Engineering project</p>
+                      <p class="subtitle is-6">Software Engineering Project</p>
                     </div>
                   </div>
                 </div>
@@ -87,32 +90,33 @@
                   <p class="modal-card-title">Create Huddle</p>
                   <button class="delete" aria-label="close"></button>
                 </header>
+                <form id="createHuddleForm">
                 <section class="modal-card-body">
                   <div class="field">
                     <label class="label">Name</label>
                     <div class="control">
-                      <input class="input" type="text" placeholder="Los Broncos">
+                      <input class="input" type="text" placeholder="Los Broncos" name="huddleName">
                     </div>
                   </div>
                   <div class="field">
                     <label class="label">Short Description</label>
                     <div class="control">
-                      <input class="input" type="text" placeholder="Final project for CS 2400">
+                      <input class="input" type="text" placeholder="Final project for CS 2400" name="description">
                     </div>
                   </div>
                   <div class="field">
                     <label class="label">Members</label>
                     <div class="control">
-                      <input class="input" type="text" placeholder="Username or email address">
+                      <input class="input" type="text" placeholder="Username or email address" name="members">
                     </div>
                   </div>
                 </section>
                 <footer class="modal-card-foot">
-                  <button class="button is-info">Create Huddle</button>
+                  <button class="button is-info" type="submit" onclick=" addStrongElement()">Create Huddle</button>
                   <button class="button is-outlined is-info">Cancel</button>
                 </footer>
+              </form>
               </div>
-          
             <button class="modal-close is-large" aria-label="close"></button>
           </div>
         </div>        
