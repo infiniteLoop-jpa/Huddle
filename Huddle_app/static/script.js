@@ -43,6 +43,20 @@ document.addEventListener('DOMContentLoaded', () => {
       closeAllModals();
     }
   });
+
+  // Add a click event to the "Cancel" button
+  const cancelButton = document.getElementById('cancelButton');
+  cancelButton.addEventListener('click', () => {
+    // Find the closest modal and close it
+    const modal = cancelButton.closest('.modal');
+    closeModal(modal);
+
+    // Reset input values to their placeholders
+    document.getElementById('huddleName').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('members').value = '';
+  });
+  
 });
 
 
@@ -75,4 +89,7 @@ function createHuddle() {
   // Insert HTML to id="cardContainer"
   const cardContainer = document.getElementById('cardContainer');
   cardContainer.insertAdjacentHTML('beforeend', huddleTemplate);
+
+  document.getElementById('huddleName').value = '';
+  document.getElementById('description').value = '';
 }
