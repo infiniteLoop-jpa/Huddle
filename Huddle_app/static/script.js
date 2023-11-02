@@ -92,4 +92,6 @@ function createHuddle() {
 
   document.getElementById('huddleName').value = '';
   document.getElementById('description').value = '';
+  document.getElementById('members').value = '';
+
 }
