@@ -100,3 +100,11 @@
     flex: 1;
     padding-left: 10px;
 }
+
+/* this is css code for login.html */
+
+.login-body {
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+    width: 500px;
+}
