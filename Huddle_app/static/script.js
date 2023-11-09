@@ -59,39 +59,61 @@ document.addEventListener('DOMContentLoaded', () => {
   
 });
 
-
-
 function createHuddle() {
-  // obtain values from user input from id="createHuddleForm"
+  // Obtain values from user input from id="createHuddleForm"
   var huddleName = document.getElementById('huddleName').value;
   var description = document.getElementById('description').value;
-
+  var members = document.getElementById('members').value;
   // Huddle group card html template
   var huddleTemplate = `
   <div class="column is-one-third">
-            <div class="card">
-              <div class="card-image">
-                <figure class="image">
-                  <img src="/static/huddle_default.png" alt="default huddle photo">
-                </figure>
-              </div>
-              <div class="card-content card-content-size">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">${huddleName}</p>
-                    <p class="subtitle is-6">${description}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <div class="card">
+      <div class="card-image">
+        <figure class="image">
+          <img src="/static/huddle_default.png" alt="default huddle photo">
+        </figure>
       </div>
+      <div class="card-content card-content-size">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">
+              <a href="javascript:void(0);" class="toggle-content">${huddleName}</a>
+            </p>
+            <p class="subtitle is-6">${description}</p>
+          </div>
+        </div>
+        <div class="huddle-content" style="display: none;">
+        <p class="huddle-members">Members: ${members}</p>
+        <p class="huddle-description">Short Description: ${description}</p>
+        </div>
+      </div>
+    </div>
+  </div>
   `;
+
   // Insert HTML to id="cardContainer"
   const cardContainer = document.getElementById('cardContainer');
   cardContainer.insertAdjacentHTML('beforeend', huddleTemplate);
 
+  // Reset input fields
   document.getElementById('huddleName').value = '';
   document.getElementById('description').value = '';
   document.getElementById('members').value = '';
 
+
+  // Add a click event listener to the title link in the newly created card
+  var titleLinks = document.querySelectorAll(".toggle-content");
+  titleLinks[titleLinks.length - 1].addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+    var huddleContent = this.closest(".card-content").querySelector(".huddle-content");
+
+    // Toggle the visibility of the huddle content
+    if (huddleContent) {
+      if (huddleContent.style.display === "none") {
+        huddleContent.style.display = "block";
+      } else {
+        huddleContent.style.display = "none";
+      }
+    }
+  });
 }
