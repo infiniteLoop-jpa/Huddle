@@ -7,3 +7,9 @@ def huddle_home(request):
 
 def huddle_group(request):
     return render(request, 'huddle_page.html')
+
+def huddle_login(request):
+    return render(request, 'login.html')
+
+def huddle_signup(request):
+    return render(request, 'signup.html')

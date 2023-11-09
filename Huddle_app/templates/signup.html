@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Huddle | Sign up</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{% static 'script.js' %}"></script>
+</head>
+<body>
+<div>
+    <section class="hero is-info is-large" style="padding-bottom: 100px;">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container ">
+                    <div class="navbar-brand">
+                        <a class="navbar-item huddle-logo">
+                            Huddle
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container">
+            <section class="hero is-fullheight">
+                <div class="login-body">
+                    <div id="signup-container">
+                        <div class="notification is-light">
+                            <p style="text-align: center; font-weight: bold;" class="is-size-5 pb-4">Create an Account</p>
+                            <!-- action=" url 'signup' "-->
+                            <form id="signup-form" action="" method="post">
+                                {% csrf_token %}
+                                <div class="field">
+                                    <label class="label">Name</label>
+                                    <p class="control has-icons-left has-icons-right">
+                                        <input class="input" type="text" name="name" placeholder="John Smith" required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fa fa-id-card"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <label class="label">Username</label>
+                                    <p class="control has-icons-left has-icons-right">
+                                        <input class="input" type="text" name="username" placeholder="Username" required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <label class="label">Email</label>
+                                    <p class="control has-icons-left has-icons-right">
+                                        <input class="input" type="email" name="email" placeholder="example@info.com" required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <label class="label">Password</label>
+                                    <p class="control has-icons-left">
+                                        <input class="input" type="password" name="password1" placeholder="Password" required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <label class="label">Re-enter Password</label>
+                                    <p class="control has-icons-left">
+                                        <input class="input" type="password" name="password2" placeholder="Password" required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <div class="control" style="text-align: center;">
+                                        <button type="submit" class="button is-info">
+                                            Sign up
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Huddle</strong> by <a href="">InfiniteLoop-JPA</a>.
+            </p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
