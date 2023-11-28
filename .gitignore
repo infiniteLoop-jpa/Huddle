@@ -1,4 +1,5 @@
 # Ignore folder
 Huddle/__pycache__
 Huddle_app/__pycache__
-huddle_env
+huddle_env/
+Huddle_app/migrations
