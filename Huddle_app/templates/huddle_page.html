@@ -4,92 +4,89 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Huddle | Group</title>
-        {% load static %}
         <link rel="stylesheet" href="{% static 'style.css' %}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <script src="{% static 'script.js' %}"></script>
     </head>
     <body>
-      <div class="home-content has-background-white">
-        <nav class="navbar has-shadow is-fixed-top" role="navigation" aria-label="main navigation">
-          <div class="navbar-brand">
-            <a class="navbar-item huddle-logo" href="">
-              <!-- <img src="" width="" height="" alt="Huddle Logo"> -->
-              Huddle
-            </a>
-        
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-          </div>
-        
-          <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-end pr-5">
-              <div class="navbar-item">
-                <div class="buttons">
-                  <a class="button is-info">
-                    <strong>Sign up</strong>
+        <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item huddle-logo pl-5" href="http://huddlgroup.com/">
+                Huddle
+              </a>
+            </div>
+            <div class="navbar-menu">
+              <div class="navbar-end">
+                <div class="navbar-item has-dropdown" id="userDropdownContainer">
+                  <a class="navbar-link" id="userDropdownTrigger">
+                    <i class="fas fa-lg fa-user-circle"></i>
                   </a>
-                  <a class="button is-info is-light">
-                    Log in
-                  </a>
+                  <div class="navbar-dropdown is-right" id="userDropdown">
+                    <div class="navbar-item">
+                        UserName
+                    </div>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item">Logout</a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
         </nav>
-        <div class="huddle-page">
-            <nav class="huddle-nav">
+
+        <nav class="navbar is-info" role="navigation" aria-label="group navigation" id="groupNavigation">
+            <div class="navbar-brand">
+                <a class="navbar-item huddle-name px-5" href="">
+                    "Huddle Name Goes Here"
+                </a>
+          
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarHuddleGroup">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+          
+            <div id="navbarHuddleGroup" class="navbar-menu">
+              <div class="navbar-start">
+                <a class="navbar-item" href="#tasks-container">
+                    Tasks
+                </a>
+          
+                <a class="navbar-item" href="#calendar-container">
+                    Calendar
+                </a>
                 
-                <div class="huddle-name-box">
-                    <img src="{% static 'huddle_default.png' %}" class="huddle-group-img">
-                    <div class="huddle-group-name">CS 4800 - SWE</div>
-                </div>
-                <div class="huddle-nav-categories">
-                    <div class="huddle-tab">
-                        <a class="huddle-tab-name">
-                            Chat
-                        </a>
-                    </div>
-                    <div class="huddle-tab">
-                        <a class="huddle-tab-name">
-                            Calendar
-                        </a>
-                    </div>
-                    <div class="huddle-tab">
-                        <a class="huddle-tab-name">
-                            Tasks
-                        </a>
-                    </div>
-                    <div class="huddle-tab">
-                        <a class="huddle-tab-name">
-                            Files
-                        </a>
-                    </div>
-                    <div class="huddle-tab">
-                        <a class="huddle-tab-name">
-                            Members
-                        </a>
-                    </div>
-                </div>
-            </nav> 
-            <main>
-                <div class="huddle-tab-body">
-                    <div>
-                        <div class="chat-container">
-                            <!-- Chat messages go here -->
-                        </div>
-                        <section class="chat-input">
-                            <button class="button is-info is-light is-rounded">+</button>
-                            <input class="input is-info is-rounded" type="text" placeholder="Message team"> 
-                            <button class="button is-info is-light is-rounded">Send</button>
-                        </section>
-                    </div>
-                </div>
-            </main>        
-        </div>
+                <a class="navbar-item" href="#members-container">
+                    Members
+                </a>
+              </div>
+              <div class="navbar-end pr-5">
+                <a class="navbar-item" href="http://huddlgroup.com/">
+                    <i class="fas fa-lg fa-home"></i>
+                </a>
+              </div>
+
+            </div>
+      </nav>
+
+      <div class="home-content has-background-light">
+          <div class="container is-max-desktop">
+              <div class="group-content">
+                  <div id="tasks-container" style="padding-top: 75px;">
+                      <p class="tab-titles">Tasks</p>
+                      <hr class="hr">
+                  </div>
+                  <div id="calendar-container" style="padding-top: 75px;">
+                      <p class="tab-titles">Calendar</p>
+                      <hr class="hr">
+                  </div>
+                  <div id="members-container" style="padding-top: 75px;">
+                      <p class="tab-titles">Members</p>
+                      <hr class="hr">
+                  </div> 
+              </div>
+          </div>
       </div>
     </body>
 </html>
