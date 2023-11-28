@@ -117,3 +117,21 @@ function createHuddle() {
     }
   });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  var groupNavigation = document.getElementById("groupNavigation");
+  var body = document.body;
+  var offset = groupNavigation.offsetTop;
+
+  function handleScroll() {
+      if (window.scrollY >= offset) {
+          groupNavigation.classList.add("is-fixed-top");
+          body.classList.add("fixed-nav-padding");
+      } else {
+          groupNavigation.classList.remove("is-fixed-top");
+          body.classList.remove("fixed-nav-padding");
+      }
+  }
+
+  window.addEventListener("scroll", handleScroll);
+});
