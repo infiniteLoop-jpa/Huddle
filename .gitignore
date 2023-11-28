@@ -1,5 +1,6 @@
 # Ignore folder
 Huddle/__pycache__
 Huddle_app/__pycache__
-huddle_env
-.DS_Store
+huddle_env/
+.DS_Store/
+Huddle_app/migrations
