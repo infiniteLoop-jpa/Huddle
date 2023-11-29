@@ -48,3 +48,17 @@ body.fixed-nav-padding {
     padding-bottom: 3rem;
     width: 500px;
 }
+/* Add padding to the add-member-button */
+.add-member-button {
+    padding: 10px; /* Adjust the value based on your preference */
+    margin-top: 20px;
+  }
+/* this is for the members email*/ 
+.content {
+    height: 100vh;
+    width: 100%;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
