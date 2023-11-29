@@ -48,3 +48,37 @@ body.fixed-nav-padding {
     padding-bottom: 3rem;
     width: 500px;
 }
+
+.bg {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    background-size: 300% 300%;
+    background-image: linear-gradient(-45deg, rgb(10, 3, 107) 0%, rgb(26, 82, 171)25%, #6dcbfa 51%, #2323ca 100%);
+    -webkit-animation: AnimateBG 20s ease infinite;
+            animation: AnimateBG 20s ease infinite;
+}
+  
+@-webkit-keyframes AnimateBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+  
+@keyframes AnimateBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
