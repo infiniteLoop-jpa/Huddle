@@ -48,6 +48,7 @@ body.fixed-nav-padding {
     padding-bottom: 3rem;
     width: 500px;
 }
+
 /* Add padding to the add-member-button */
 .add-member-button {
     padding: 10px; /* Adjust the value based on your preference */
@@ -62,3 +63,10 @@ body.fixed-nav-padding {
     padding-top: 50px;
     padding-bottom: 50px;
 }
+
+.name {
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
