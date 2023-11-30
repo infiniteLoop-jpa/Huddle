@@ -137,3 +137,14 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   calendar.render();
 });
+
+
+function toggleTaskCard(header) {
+  const content = header.nextElementSibling;
+  content.style.display = (content.style.display === 'none' || content.style.display === '') ? 'block' : 'none';
+}
+
+function deleteTask(footer) {
+  const card = footer.parentElement.parentElement;
+  card.remove(); // Remove the entire card element
+}
