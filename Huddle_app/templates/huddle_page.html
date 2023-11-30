@@ -20,23 +20,23 @@
               </a>
             </div>
             <div class="navbar-menu">
-              <div class="navbar-end">
-                <div class="navbar-item has-dropdown is-hoverable" id="userDropdownContainer">
-                  <a class="navbar-link">
-                    <i class="fas fa-lg fa-user-circle"></i>
-                  </a>
-                  <div class="navbar-dropdown is-right">
-                    <div class="navbar-item">
-                        <strong>UserName</strong>
-                    </div>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item">
-                        <p class="has-text-danger">Logout</p>
+                <div class="navbar-end">
+                  <div class="navbar-item has-dropdown is-hoverable" id="userDropdownContainer">
+                    <a class="navbar-link">
+                      <i class="fas fa-lg fa-user-circle"></i>
                     </a>
+                    <div class="navbar-dropdown is-right">
+                      <div class="navbar-item">
+                          <strong>UserName</strong>
+                      </div>
+                      <hr class="navbar-divider">
+                      <a class="navbar-item">
+                          <p class="has-text-danger">Logout</p>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
           </nav>
 
         <nav class="navbar is-info" role="navigation" aria-label="group navigation" id="groupNavigation">
@@ -91,7 +91,7 @@
                         <p class="tab-titles">Members</p>
                         <hr class="hr">
                         <button class="button is-info is-rounded add-member-button is-outlined js-modal-trigger mt-0" data-target="modal-create-member">+</button>
-                        <div class="columns is-multiline pt-5 is-vcentered">
+                        <div class="columns is-multiline pt-5 is-vcentered" id="columns-container">
                             <div class="column is-one-third">
                                 <div class="card rounded-edges">
                                     <div class="card-content">
@@ -144,7 +144,7 @@
                                                           <p class="modal-card-title">Add Member</p>
                                                           <button class="delete" aria-label="close"></button>
                                                       </header>
-                                                      <form id="addMemberForm" onsubmit="addMember(); return false;">
+                                                      <form id="addMemberForm" onsubmit="addMember(event); return false;">
                                                           <section class="modal-card-body">
                                                               <div class="field">
                                                                   <label class="label">Name</label>
