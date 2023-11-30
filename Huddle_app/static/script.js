@@ -54,8 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reset input values to their placeholders
     document.getElementById('huddleName').value = '';
     document.getElementById('members').value = '';
-  });
-  
+  });  
 });
 
 function createHuddle() {
@@ -112,6 +111,41 @@ function createHuddle() {
     }
   });
 }
+function addMember(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Obtain values from user input from id="addMemberForm"
+  var memberName = document.getElementById('memberName').value;
+  var memberEmail = document.getElementById('memberEmail').value;
+
+  // Create a new member card HTML template
+  var memberTemplate = `
+    <div class="column is-one-third">
+      <div class="card rounded-edges">
+        <div class="card-content">
+          <p class="name">${memberName}</p>
+        </div>
+        <footer class="card-footer" style="justify-content: center;">
+          <div class="py-3 px-3">
+            <a class="pl-2" href="mailto:${memberEmail}" target="_blank">
+              <i class="fas fa-2x fa-envelope"></i>
+            </a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  `;
+
+  // Insert the new member card HTML into the members-container
+  const membersContainer = document.getElementById('columns-container');
+  membersContainer.insertAdjacentHTML('beforeend', memberTemplate);
+    // Reset input fields--
+    document.getElementById('memberName').value = '';
+    document.getElementById('memberEmail').value = '';
+   
+}
+
 
 document.addEventListener("DOMContentLoaded", function() {
   var groupNavigation = document.getElementById("groupNavigation");
@@ -132,10 +166,19 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
+
   var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth'
+    selectable: true,
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    dateClick: function(info) {
+      alert('clicked ' + info.dateStr);
+    },
   });
-  calendar.render();
+ calendar.render();
 });
 
 
