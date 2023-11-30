@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'huddledb',
         'USER': 'postgres',
         'PASSWORD': 'Huddle123',
-        'HOST': 'localhost', 
+        'HOST': 'huddledb.cjujdmuufeks.us-west-1.rds.amazonaws.com', 
         'PORT': '5432', 
 
     }
