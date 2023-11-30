@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Reset input values to their placeholders
     document.getElementById('huddleName').value = '';
-    document.getElementById('description').value = '';
     document.getElementById('members').value = '';
   });
   
@@ -62,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
 function createHuddle() {
   // Obtain values from user input from id="createHuddleForm"
   var huddleName = document.getElementById('huddleName').value;
-  var description = document.getElementById('description').value;
   var members = document.getElementById('members').value;
   // Huddle group card html template
   var huddleTemplate = `
@@ -79,12 +77,10 @@ function createHuddle() {
             <p class="title is-4">
               <a href="javascript:void(0);" class="toggle-content">${huddleName}</a>
             </p>
-            <p class="subtitle is-6">${description}</p>
           </div>
         </div>
         <div class="huddle-content" style="display: none;">
         <p class="huddle-members">Members: ${members}</p>
-        <p class="huddle-description">Short Description: ${description}</p>
         </div>
       </div>
     </div>
@@ -97,7 +93,6 @@ function createHuddle() {
 
   // Reset input fields
   document.getElementById('huddleName').value = '';
-  document.getElementById('description').value = '';
   document.getElementById('members').value = '';
 
 

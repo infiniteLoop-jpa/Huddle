@@ -70,122 +70,101 @@
               </div>
 
             </div>
-      </nav>
+        </nav>
 
-      <div class="home-content has-background-light">
-          <div class="container is-max-desktop">
-              <div class="group-content">
-                  <div id="tasks-container" style="padding-top: 75px;">
-                      <p class="tab-titles">Tasks</p>
-                      <hr class="hr">
-                  </div>
-                  <div id="calendar-container" style="padding-top: 75px;">
-                      <p class="tab-titles">Calendar</p>
-                      <hr class="hr">
-                  </div>
-                  <div id="members-container" style="padding-top: 75px;">
-                      <p class="tab-titles">Members</p>
-                      <hr class="hr">
-                      <div class="columns">
-                        <div class="column">
-                          <button class="button is-link is-rounded add-member-button is-outlined js-modal-trigger" data-target="modal-create-member">+</button>
-                        </div>
-                      </div>
-                      <!-- Modal for adding members -->
-                      <div id="modal-create-member" class="modal">
-                        <div class="modal-background"></div>
-                        <div class="modal-card">
-                          <header class="modal-card-head">
-                            <p class="modal-card-title">Add Member</p>
-                            <button class="delete" aria-label="close"></button>
-                          </header>
-                          <form id="addMemberForm" onsubmit="addMember(); return false;">
-                            <section class="modal-card-body">
-                              <div class="field">
-                                <label class="label">Name</label>
-                                <div class="control">
-                                  <input class="input" type="text" placeholder="John Doe" name="memberName" id="memberName">
-                                </div>
-                              </div>
-                              <div class="field">
-                                <label class="label">Email</label>
-                                <div class="control">
-                                  <input class="input" type="email" placeholder="john@example.com" name="memberEmail" id="memberEmail">
-                                </div>
-                              </div>
-                            </section>
-                            <footer class="modal-card-foot">
-                              <button class="button is-info" type="submit">Add Member</button>
-                              <button class="button is-outlined is-info" id="cancelAddMemberButton" type="button">Cancel</button>
-                            </footer>
-                          </form>
-                        </div>
-                        <button class="modal-close is-large" aria-label="close"></button>
-                      </div>
-                      <!-- Existing modal code (for creating huddle) -->
-                      <div id="modal-create-huddle" class="modal">
-                        <!-- ... (existing modal code) ... -->
-                      </div>
-                      <div class="columns is-multiline pt-5 is-vcentered">
-                        <div class="column is-one-third">
-                            <div class="card rounded-edges">
-                                <div class="card-content">
-                                    <p class="name mb-1">Julia Ybañez</p>
-                                    <div>
+        <div class="home-content has-background-light">
+            <div class="container is-max-desktop">
+                <div class="group-content">
+                    <div id="tasks-container" style="padding-top: 75px;">
+                        <p class="tab-titles">Tasks</p>
+                        <hr class="hr">
+                    </div>
+                    <div id="calendar-container" style="padding-top: 75px;">
+                        <p class="tab-titles">Calendar</p>
+                        <hr class="hr">
+                    </div>
+                    <div id="members-container" style="padding-top: 75px;">
+                        <p class="tab-titles">Members</p>
+                        <hr class="hr">
+                        <button class="button is-info is-rounded add-member-button is-outlined js-modal-trigger mt-0" data-target="modal-create-member">+</button>
+                        <div class="columns is-multiline pt-5 is-vcentered">
+                            <div class="column is-one-third">
+                                <div class="card rounded-edges">
+                                    <div class="card-content">
+                                        <p class="name">Julia Ybañez</p>
                                     </div>
-                                </div>
-                                <footer class="card-footer" style="justify-content: center;">
-                                    <div class="py-3 px-3">
-                                      <a href="https://outlook.office.com/alondramarin@cpp.edu/" target="_blank">
-    
-                                              <i class="far fa-2x fa-envelope"></i>
+                                    <footer class="card-footer" style="justify-content: center;">
+                                        <div class="py-3 px-3">
+                                            <a href="mailto:" target="_blank">
+                                                <i class="fas fa-2x fa-envelope"></i>
                                             </a>
-                                        </p>
-                                    </div>
-                                </footer>
-                            </div>
-                        </div>
-                        <div class="column is-one-third">
-                            <div class="card rounded-edges">
-                                <div class="card-content">
-                                    <p class="name mb-1">Pablo Dueñas</p>
-                                    <div>
-                                        
-                                    </div>
+                                        </div>
+                                    </footer>
                                 </div>
-                                <footer class="card-footer" style="justify-content: center;">
-                                    <div class="py-3 px-3">
-                                          <a class=""herf="https://outlook.office.com/alondramarin@cpp.edu/"target="_blank">
-                                            <i class="far fa-2x fa-envelope"></i>
-                                          </a>
-                                        </p>
-                                    </div>
-                                </footer>
                             </div>
-                        </div>
-                        <div class="column is-one-third">
-                            <div class="card rounded-edges">
-                                <div class="card-content">
-                                    <p class="name mb-1">Alondra Marin</p>
-                                    <div>
-                                       
+                            <div class="column is-one-third">
+                                <div class="card rounded-edges">
+                                    <div class="card-content">
+                                        <p class="name">Pablo Dueñas</p>
                                     </div>
+                                    <footer class="card-footer" style="justify-content: center;">
+                                        <div class="py-3 px-3">
+                                            <a herf="mailto:" target="_blank">
+                                                <i class="fas fa-2x fa-envelope"></i>
+                                            </a>
+                                        </div>
+                                    </footer>
                                 </div>
-                                <footer class="card-footer" style="justify-content: center;">
-                                    <div class="py-3 px-3">
-                                          <a class="pl-2"herf="https://outlook.office.com/alondramarin@cpp.edu/"target="_blank">
-                                            <i class="far fa-2x fa-envelope"></i>
-                                          </a>
-                                        </p>
+                            </div>
+                            <div class="column is-one-third">
+                                <div class="card rounded-edges">
+                                    <div class="card-content">
+                                        <p class="name">Alondra Marin</p>
                                     </div>
-                                </footer>
+                                    <footer class="card-footer" style="justify-content: center;">
+                                        <div class="py-3 px-3">
+                                            <a herf="mailto:" target="_blank">
+                                                <i class="fas fa-2x fa-envelope"></i>
+                                            </a>
+                                        </div>
+                                    </footer>
+                                </div>
                             </div>
                         </div>
                     </div>
-    
-                  </div> 
-              </div>
-          </div>
-      </div>
+                    <!-- Modal for adding members -->
+                    <div id="modal-create-member" class="modal">
+                                                  <div class="modal-background"></div>
+                                                  <div class="modal-card">
+                                                      <header class="modal-card-head">
+                                                          <p class="modal-card-title">Add Member</p>
+                                                          <button class="delete" aria-label="close"></button>
+                                                      </header>
+                                                      <form id="addMemberForm" onsubmit="addMember(); return false;">
+                                                          <section class="modal-card-body">
+                                                              <div class="field">
+                                                                  <label class="label">Name</label>
+                                                                  <div class="control">
+                                                                      <input class="input" type="text" placeholder="John Doe" name="memberName" id="memberName">
+                                                                  </div>
+                                                              </div>
+                                                              <div class="field">
+                                                                  <label class="label">Email</label>
+                                                                  <div class="control">
+                                                                      <input class="input" type="email" placeholder="john@example.com" name="memberEmail" id="memberEmail">
+                                                                  </div>
+                                                              </div>
+                                                          </section>
+                                                          <footer class="modal-card-foot">
+                                                              <button class="button is-info" type="submit">Add Member</button>
+                                                              <button class="button is-outlined is-info" id="cancelAddMemberButton" type="button">Cancel</button>
+                                                          </footer>
+                                                      </form>
+                                                  </div>
+                                                <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                </div> 
+            </div>
+        </div>
     </body>
 </html>
