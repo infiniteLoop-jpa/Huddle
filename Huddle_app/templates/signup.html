@@ -35,9 +35,18 @@
                             <form id="signup-form" action="" method="post">
                                 {% csrf_token %}
                                 <div class="field">
-                                    <label class="label">Name</label>
+                                    <label class="label">First Name</label>
                                     <p class="control has-icons-left has-icons-right">
-                                        <input class="input" type="text" name="name" placeholder="John Smith" required>
+                                        <input class="input" type="text" name="first name" placeholder="John" required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fa fa-id-card"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <label class="label">Last Name</label>
+                                    <p class="control has-icons-left has-icons-right">
+                                        <input class="input" type="text" name="last name" placeholder="Smith" required>
                                         <span class="icon is-small is-left">
                                             <i class="fa fa-id-card"></i>
                                         </span>

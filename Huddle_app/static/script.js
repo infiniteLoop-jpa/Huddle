@@ -140,7 +140,7 @@ function addMember(event) {
   // Insert the new member card HTML into the members-container
   const membersContainer = document.getElementById('columns-container');
   membersContainer.insertAdjacentHTML('beforeend', memberTemplate);
-    // Reset input fields
+    // Reset input fields--
     document.getElementById('memberName').value = '';
     document.getElementById('memberEmail').value = '';
    
