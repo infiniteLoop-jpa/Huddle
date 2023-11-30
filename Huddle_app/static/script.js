@@ -132,8 +132,17 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
+
   var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth'
+    selectable: true,
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    dateClick: function(info) {
+      alert('clicked ' + info.dateStr);
+    },
   });
-  calendar.render();
+ calendar.render();
 });
