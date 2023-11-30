@@ -7,6 +7,8 @@
         {% load static %}
         <link rel="stylesheet" href="{% static 'style.css' %}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bulma@0.9.4/dist/js/bulma.min.js"></script>
         <script src="{% static 'script.js' %}"></script>
     </head>
     <body>
@@ -14,26 +16,23 @@
         <!-- navigation bar on top of window -->
         <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
-            <a class="navbar-item huddle-logo" href="">
-              <!-- <img src="" width="" height="" alt="Huddle Logo"> -->
+            <a class="navbar-item huddle-logo pl-5" href="http://huddlgroup.com/">
               Huddle
             </a>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
           </div>
-        
-          <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-end pr-5">
-              <div class="navbar-item">
-                <div class="buttons">
-                  <a class="button is-info">
-                    <strong>Sign up</strong>
-                  </a>
-                  <a class="button is-info is-light">
-                    Log in
+          <div class="navbar-menu">
+            <div class="navbar-end">
+              <div class="navbar-item has-dropdown is-hoverable" id="userDropdownContainer">
+                <a class="navbar-link">
+                  <i class="fas fa-lg fa-user-circle"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                  <div class="navbar-item">
+                      <strong>UserName</strong>
+                  </div>
+                  <hr class="navbar-divider">
+                  <a class="navbar-item">
+                      <p class="has-text-danger">Logout</p>
                   </a>
                 </div>
               </div>
@@ -44,37 +43,13 @@
         <!-- all content on page -->
         <div class="container is-max-desktop">
           <!-- all huddle groups displayed (3 per row) -->
-          <div class="columns is-multiline is-vcentered pt-6" id="cardContainer">
+          <p class="tab-titles pt-4">Huddle Groups</p>
+          <hr class="hr">
+          <div class="columns is-multiline is-vcentered pt-3" id="cardContainer">
             <!-- button to create new huddle -->
             <div class="column is-one-third">
               <button class="add-huddle-button is-outlined js-modal-trigger" data-target="modal-create-huddle">+</button>
             </div>
-              <!-- Hardcoded example of huddle card -->
-              <div class="column is-one-third">
-                <div class="card">
-                  <div class="card-image">
-                    <figure class="image">
-                      <img src="{% static 'huddle_default.png' %}" alt="default huddle photo">
-                    </figure>
-                  </div>
-                  <div class="card-content card-content-size">
-                    <div class="media">
-                      <div class="media-content">
-                        <p class="title is-4">
-                          <a href="javascript:void(0);" class="toggle-content">CS 4800</a>
-                        </p>
-                        <p class="subtitle is-6">Software Engineering Project</p>
-                      </div>
-                    </div>
-                    <div class="huddle-content" style="display: none;">
-                    <!-- Content for the huddle group goes here -->
-                    <p class="huddle-members">Members: ${members}</p>
-                    <p class="huddle-description">Short Description: ${description}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <!-- Hardcoded example of huddle card -->
             <div class="column is-one-third">
               <div class="card">
@@ -110,12 +85,6 @@
                   <label class="label">Name</label>
                   <div class="control">
                     <input class="input" type="text" placeholder="Los Broncos" name="huddleName" id="huddleName">
-                  </div>
-                </div>
-                <div class="field">
-                  <label class="label">Short Description</label>
-                  <div class="control">
-                    <input class="input" type="text" placeholder="Final project for CS 2400" name="description" id="description">
                   </div>
                 </div>
                 <div class="field">
