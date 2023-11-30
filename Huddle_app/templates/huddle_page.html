@@ -3,13 +3,13 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% load static %}
         <title>Huddle | Group</title>
         {% load static %}
         <link rel="stylesheet" href="{% static 'style.css' %}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <script src="{% static 'script.js' %}"></script>
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
     </head>
     <body>
         <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
@@ -20,21 +20,23 @@
             </div>
             <div class="navbar-menu">
               <div class="navbar-end">
-                <div class="navbar-item has-dropdown" id="userDropdownContainer">
-                  <a class="navbar-link" id="userDropdownTrigger">
+                <div class="navbar-item has-dropdown is-hoverable" id="userDropdownContainer">
+                  <a class="navbar-link">
                     <i class="fas fa-lg fa-user-circle"></i>
                   </a>
-                  <div class="navbar-dropdown is-right" id="userDropdown">
+                  <div class="navbar-dropdown is-right">
                     <div class="navbar-item">
-                        UserName
+                        <strong>UserName</strong>
                     </div>
                     <hr class="navbar-divider">
-                    <a class="navbar-item">Logout</a>
+                    <a class="navbar-item">
+                        <p class="has-text-danger">Logout</p>
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
-        </nav>
+          </nav>
 
         <nav class="navbar is-info" role="navigation" aria-label="group navigation" id="groupNavigation">
             <div class="navbar-brand">
@@ -82,6 +84,7 @@
                     <div id="calendar-container" style="padding-top: 75px;">
                         <p class="tab-titles">Calendar</p>
                         <hr class="hr">
+                        <div id='calendar'></div>
                     </div>
                     <div id="members-container" style="padding-top: 75px;">
                         <p class="tab-titles">Members</p>
@@ -95,7 +98,7 @@
                                     </div>
                                     <footer class="card-footer" style="justify-content: center;">
                                         <div class="py-3 px-3">
-                                            <a href="mailto:" target="_blank">
+                                            <a class="pl-2"href="mailto:ybanez@cpp.edu"target="_blank">
                                                 <i class="fas fa-2x fa-envelope"></i>
                                             </a>
                                         </div>
@@ -109,7 +112,7 @@
                                     </div>
                                     <footer class="card-footer" style="justify-content: center;">
                                         <div class="py-3 px-3">
-                                            <a herf="mailto:" target="_blank">
+                                            <a class="pl-2"href="mailto:pduenas@cpp.edu"target="_blank">
                                                 <i class="fas fa-2x fa-envelope"></i>
                                             </a>
                                         </div>
@@ -123,7 +126,7 @@
                                     </div>
                                     <footer class="card-footer" style="justify-content: center;">
                                         <div class="py-3 px-3">
-                                            <a herf="mailto:" target="_blank">
+                                            <a class="pl-2"href="mailto:alondramarin@cpp.edu"target="_blank">
                                                 <i class="fas fa-2x fa-envelope"></i>
                                             </a>
                                         </div>
