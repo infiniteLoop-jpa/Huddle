@@ -17,29 +17,26 @@
               <a class="navbar-item huddle-logo pl-5" href="http://huddlgroup.com/">
                 Huddle
               </a>
-              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-              </a>
             </div>
-            <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-menu">
               <div class="navbar-end">
-                <div class="navbar-item has-dropdownis is-hoverable">
+                <div class="navbar-item has-dropdown is-hoverable" id="userDropdownContainer">
                   <a class="navbar-link">
                     <i class="fas fa-lg fa-user-circle"></i>
                   </a>
-                  <div class="navbar-dropdown is-right" id="userDropdown">
+                  <div class="navbar-dropdown is-right">
                     <div class="navbar-item">
-                        UserName
+                        <strong>UserName</strong>
                     </div>
                     <hr class="navbar-divider">
-                    <a class="navbar-item">Logout</a>
+                    <a class="navbar-item">
+                        <p class="has-text-danger">Logout</p>
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
-        </nav>
+          </nav>
 
         <nav class="navbar is-info" role="navigation" aria-label="group navigation" id="groupNavigation">
             <div class="navbar-brand">
