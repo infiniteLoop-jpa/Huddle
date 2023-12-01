@@ -15,30 +15,37 @@ def huddle_login(request):
 
 def huddle_signup(request):
     if request.method == 'POST':
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        username = request.POST['username']
-        email = request.POST['email']
-        password1 = request.POST['password1']
-        password2 = request.POST['password2']
+        # Extract data from the form
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
 
-        # Check if passwords match
+        # Perform basic form validation
         if password1 != password2:
             messages.error(request, "Passwords do not match.")
             return redirect('Huddle_app:huddle_signup')
 
-        # Assuming you have a simple Account model
+        # Check if the username or email is already taken
+        if Account.objects.filter(username=username).exists() or Account.objects.filter(email=email).exists():
+            messages.error(request, "Username or email already taken.")
+            return redirect('Huddle_app:huddle_signup')
+
+        # Create an Account instance and save it to the database
         account = Account(
             first_name=first_name,
             last_name=last_name,
             username=username,
             email=email,
-            password=password1  # Store the password securely using Django's password hashing
+            password=password1
         )
-
         account.save()
 
-        messages.success(request, "Account created successfully. You can now log in.")
+        # Optionally, you might want to log in the user after signing up
+        # For simplicity, we'll redirect to the login page
+        messages.success(request, "Account created successfully. Please log in.")
         return redirect('Huddle_app:huddle_login')
 
     return render(request, 'signup.html')
