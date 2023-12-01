@@ -81,8 +81,10 @@
                     <div id="tasks-container" style="padding-top: 75px;">
                         <p class="tab-titles">Tasks</p>
                         <hr class="hr">
-                        <button class="button is-info is-rounded add-task-button is-outlined js-modal-trigger mt-0" data-target="modal-create-task">+</button>
-                        <div class="tasks">
+                        <button class="button is-info is-rounded add-task-button is-outlined js-modal-trigger mt-0" data-target="modal-create-task" id="addTaskButton">+</button>
+                        <div class="tasks" id="tasks-container">
+                            <!-- Existing task cards will be appended here -->
+                        </div>
                           <!-- Example Task Card (you can repeat this structure for each task) -->
                           <div class="card">
                               <header class="card-header" onclick="toggleTaskCard(this)">
@@ -108,8 +110,6 @@
                                 </footer>
                           </div>
                           <!-- End of Example Task Card -->
-                        </div>
-                        
                     </div>
                     <div id="calendar-container" style="padding-top: 75px;">
                         <p class="tab-titles">Calendar</p>
