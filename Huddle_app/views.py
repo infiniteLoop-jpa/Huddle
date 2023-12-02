@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.db import IntegrityError
 from .models import Account
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
 def huddle_home(request):
@@ -11,6 +13,21 @@ def huddle_group(request):
     return render(request, 'huddle_page.html')
 
 def huddle_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            # If the user is valid, log them in
+            login(request, user)
+            return redirect('Huddle_app:huddle_home')  # Redirect to the home page after login
+        else:
+            # If the user is not valid, display an error message
+            messages.error(request, "Invalid username or password.")
+            return redirect('Huddle_app:huddle_login')
+
     return render(request, 'login.html')
 
 def huddle_signup(request):
