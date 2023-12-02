@@ -81,7 +81,7 @@
                     <div id="tasks-container" style="padding-top: 75px;">
                         <p class="tab-titles">Tasks</p>
                         <hr class="hr">
-                        <button class="button is-info is-rounded add-task-button is-outlined js-modal-trigger mt-0" data-target="modal-create-task" id="addTaskButton">+</button>
+                        <button class="button is-info is-rounded add-task-button is-outlined js-modal-trigger mt-0" data-target="modal-create-task" id="addTaskButton"style="margin-bottom: 20px;">+</button>
                         <div class="tasks" id="tasks-container">
                             <!-- Existing task cards will be appended here -->
                         </div>
@@ -173,7 +173,7 @@
                               <p class="modal-card-title">Add Task</p>
                               <button class="delete" aria-label="close"></button>
                           </header>
-                          <form id="addTaskForm" onsubmit="addTask(); return false;">
+                          <form id="addTaskForm" onsubmit="addTask(event); return false;">
                               <section class="modal-card-body">
                                   <div class="field">
                                       <label class="label">Task Name</label>
