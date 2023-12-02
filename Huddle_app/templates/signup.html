@@ -32,12 +32,12 @@
                         <div class="notification is-light">
                             <p style="text-align: center; font-weight: bold;" class="is-size-5 pb-4">Create an Account</p>
                             <!-- action=" url 'signup' "-->
-                            <form id="signup-form" action="" method="post">
+                            <form id="signup-form" action="{% url 'Huddle_app:huddle_signup' %}" method="post">
                                 {% csrf_token %}
                                 <div class="field">
                                     <label class="label">First Name</label>
                                     <p class="control has-icons-left has-icons-right">
-                                        <input class="input" type="text" name="first name" placeholder="John" required>
+                                        <input class="input" type="text" name="first_name" placeholder="John" required>
                                         <span class="icon is-small is-left">
                                             <i class="fa fa-id-card"></i>
                                         </span>
@@ -46,7 +46,7 @@
                                 <div class="field">
                                     <label class="label">Last Name</label>
                                     <p class="control has-icons-left has-icons-right">
-                                        <input class="input" type="text" name="last name" placeholder="Smith" required>
+                                        <input class="input" type="text" name="last_name" placeholder="Smith" required>
                                         <span class="icon is-small is-left">
                                             <i class="fa fa-id-card"></i>
                                         </span>

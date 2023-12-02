@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-d30e@pj7e)(2=@@h=l+lo*ags+_y^e!a_09dp6mx^@(1b!brsq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['ec2-54-219-123-237.us-west-1.compute.amazonaws.com', 'huddlgroup.com']
 
 
 # Application definition
@@ -86,7 +86,8 @@ DATABASES = {
         'NAME': 'huddledb',
         'USER': 'postgres',
         'PASSWORD': 'Huddle123',
-        'HOST': 'localhost', 
+        'HOST': 'huddledb.cjujdmuufeks.us-west-1.rds.amazonaws.com',
+        #'HOST': 'localhost', 
         'PORT': '5432', 
 
     }
