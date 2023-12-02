@@ -210,7 +210,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-function addTask() {
+function addTask(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
   // Obtain values from user input from id="addTaskForm"
   var taskName = document.getElementById('taskName').value;
   var taskDescription = document.getElementById('taskDescription').value;
@@ -248,14 +251,11 @@ function addTask() {
   const tasksContainer = document.getElementById('tasks-container');
   tasksContainer.insertAdjacentHTML('beforeend', taskTemplate);
 
-  // Close the modal
-  const modal = document.getElementById('modal-create-task');
-  closeModal(modal);
-
   // Reset input fields
   document.getElementById('taskName').value = '';
   document.getElementById('taskDescription').value = '';
   document.getElementById('assignedMembers').value = '';
   document.getElementById('dueDate').value = '';
 }
+
 
