@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from Huddle_app import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('Huddle_app.urls')),
+    path('login/', views.huddle_login, name='huddle_login'),
+
 ]
