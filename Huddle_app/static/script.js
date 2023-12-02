@@ -54,7 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reset input values to their placeholders
     document.getElementById('huddleName').value = '';
     document.getElementById('members').value = '';
+
   });  
+
 });
 
 function createHuddle() {
@@ -111,6 +113,8 @@ function createHuddle() {
     }
   });
 }
+
+
 function addMember(event) {
   // Prevent the default form submission behavior
   event.preventDefault();
@@ -164,6 +168,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   window.addEventListener("scroll", handleScroll);
 });
+
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
@@ -180,3 +185,77 @@ document.addEventListener('DOMContentLoaded', function() {
   });
  calendar.render();
 });
+
+
+
+function toggleTaskCard(header) {
+  const content = header.nextElementSibling;
+  content.style.display = (content.style.display === 'none' || content.style.display === '') ? 'block' : 'none';
+}
+
+function deleteTask(footer) {
+  const card = footer.parentElement.parentElement;
+  card.remove(); // Remove the entire card element
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Add a click event on the "Task + button"
+  const addTaskButton = document.getElementById('addTaskButton');
+  addTaskButton.addEventListener('click', () => {
+      const modal = addTaskButton.dataset.target;
+      const $target = document.getElementById(modal);
+      openModal($target);
+  });
+});
+
+function addTask(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Obtain values from user input from id="addTaskForm"
+  var taskName = document.getElementById('taskName').value;
+  var taskDescription = document.getElementById('taskDescription').value;
+  var assignedMembers = document.getElementById('assignedMembers').value;
+  var dueDate = document.getElementById('dueDate').value;
+
+  // Task card HTML template
+  var taskTemplate = `
+      <div class="card">
+          <header class="card-header" onclick="toggleTaskCard(this)">
+              <p class="card-header-title">
+                  ${taskName}
+              </p>
+              <button class="card-header-icon" aria-label="more options">
+                  <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+              </button>
+          </header>
+          <div class="card-content">
+              <div class="content">
+                  Description: ${taskDescription}
+                  <br>
+                  Assigned Members: ${assignedMembers}
+              </div>
+          </div>
+          <footer class="card-footer">
+              <p class="card-footer-item">Due Date: ${dueDate}</p>
+              <a href="#" class="card-footer-item" onclick="deleteTask(this)">Delete</a>
+          </footer>
+      </div>
+  `;
+
+  // Insert the new task card HTML into the tasks container
+  const tasksContainer = document.getElementById('tasks-container');
+  tasksContainer.insertAdjacentHTML('beforeend', taskTemplate);
+
+  // Reset input fields
+  document.getElementById('taskName').value = '';
+  document.getElementById('taskDescription').value = '';
+  document.getElementById('assignedMembers').value = '';
+  document.getElementById('dueDate').value = '';
+}
+
+

@@ -81,7 +81,35 @@
                     <div id="tasks-container" style="padding-top: 75px;">
                         <p class="tab-titles">Tasks</p>
                         <hr class="hr">
-                        
+                        <button class="button is-info is-rounded add-task-button is-outlined js-modal-trigger mt-0" data-target="modal-create-task" id="addTaskButton"style="margin-bottom: 20px;">+</button>
+                        <div class="tasks" id="tasks-container">
+                            <!-- Existing task cards will be appended here -->
+                        </div>
+                          <!-- Example Task Card (you can repeat this structure for each task) -->
+                          <div class="card">
+                              <header class="card-header" onclick="toggleTaskCard(this)">
+                                  <p class="card-header-title">
+                                      Task #1: Task Name Goes Here
+                                  </p>
+                                  <button class="card-header-icon" aria-label="more options">
+                                      <span class="icon">
+                                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                      </span>
+                                  </button>
+                              </header>
+                              <div class="card-content">
+                                  <div class="content">
+                                      Description: Task description goes here.
+                                      <br>
+                                      Assigned Members: Member 1, Member 2
+                                  </div>
+                              </div>
+                              <footer class="card-footer">
+                                  <p class="card-footer-item">Due Date: 2023-12-31</p>
+                                  <a href="#" class="card-footer-item" onclick="deleteTask(this)">Delete</a>
+                                </footer>
+                          </div>
+                          <!-- End of Example Task Card -->
                     </div>
                     <div id="calendar-container" style="padding-top: 75px;">
                         <p class="tab-titles">Calendar</p>
@@ -136,6 +164,49 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <!-- Modal for creating tasks -->
+                    <div id="modal-create-task" class="modal">
+                      <div class="modal-background"></div>
+                      <div class="modal-card">
+                          <header class="modal-card-head">
+                              <p class="modal-card-title">Add Task</p>
+                              <button class="delete" aria-label="close"></button>
+                          </header>
+                          <form id="addTaskForm" onsubmit="addTask(event); return false;">
+                              <section class="modal-card-body">
+                                  <div class="field">
+                                      <label class="label">Task Name</label>
+                                      <div class="control">
+                                          <input class="input" type="text" placeholder="Task Name" name="taskName" id="taskName">
+                                      </div>
+                                  </div>
+                                  <div class="field">
+                                      <label class="label">Description</label>
+                                      <div class="control">
+                                          <textarea class="textarea" placeholder="Task description" name="taskDescription" id="taskDescription"></textarea>
+                                      </div>
+                                  </div>
+                                  <div class="field">
+                                      <label class="label">Assigned Members</label>
+                                      <div class="control">
+                                          <input class="input" type="text" placeholder="Member 1, Member 2" name="assignedMembers" id="assignedMembers">
+                                      </div>
+                                  </div>
+                                  <div class="field">
+                                      <label class="label">Due Date</label>
+                                      <div class="control">
+                                          <input class="input" type="date" name="dueDate" id="dueDate">
+                                      </div>
+                                  </div>
+                              </section>
+                              <footer class="modal-card-foot">
+                                  <button class="button is-info" type="submit">Add Task</button>
+                                  <button class="button is-outlined is-info" id="cancelAddTaskButton" type="button">Cancel</button>
+                              </footer>
+                          </form>
+                      </div>
+                      <button class="modal-close is-large" aria-label="close"></button>
                     </div>
                     <!-- Modal for adding members -->
                     <div id="modal-create-member" class="modal">
