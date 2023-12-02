@@ -51,6 +51,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "Huddle.urls"
+LOGIN_REDIRECT_URL = '/huddle/home/'
+
 
 TEMPLATES = [
     {
