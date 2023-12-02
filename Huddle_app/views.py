@@ -4,6 +4,7 @@ from django.db import IntegrityError
 from .models import Account
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import views as auth_views
 # Create your views here.
 
 def huddle_home(request):
@@ -66,3 +67,9 @@ def huddle_signup(request):
         return redirect('Huddle_app:huddle_login')
 
     return render(request, 'signup.html')
+
+class CustomLoginView(auth_views.LoginView):
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        # Redirect to huddle/home/ after a successful login
+        return redirect('Huddle_app:huddle_home')
