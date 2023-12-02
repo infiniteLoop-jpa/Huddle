@@ -5,6 +5,8 @@ from .models import Account
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
 # Create your views here.
 
 def huddle_home(request):
@@ -68,8 +70,10 @@ def huddle_signup(request):
 
     return render(request, 'signup.html')
 
-class CustomLoginView(auth_views.LoginView):
+class CustomLoginView(LoginView):
+    template_name = 'registration/login.html'
+    success_url = reverse_lazy('Huddle_app:huddle_home')
+
     def form_valid(self, form):
-        response = super().form_valid(form)
-        # Redirect to huddle/home/ after a successful login
-        return redirect('Huddle_app:huddle_home')
+        print("Login successful!")  # Add this line for debugging
+        return super().form_valid(form)
