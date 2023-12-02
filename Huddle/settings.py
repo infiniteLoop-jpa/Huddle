@@ -52,6 +52,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "Huddle.urls"
 LOGIN_REDIRECT_URL = '/huddle/home/'
+LOGIN_URL = 'Huddle_app:huddle_login'
+
 
 
 TEMPLATES = [
