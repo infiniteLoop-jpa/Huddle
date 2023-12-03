@@ -102,6 +102,7 @@
               <button class="delete" aria-label="close"></button>
             </header>
             <form id="createHuddleForm" method="post" action="{% url 'Huddle_app:create_huddle' %}">
+              {% csrf_token %}
               <section class="modal-card-body">
                 <div class="field">
                   <label class="label">Name</label>
