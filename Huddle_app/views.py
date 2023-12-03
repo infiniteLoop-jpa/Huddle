@@ -48,7 +48,7 @@ def create_huddle(request):
             name=huddle_name,
         )
         # Use set() to add members to the many-to-many relationship
-        huddle_group.members.set(Account.objects.filter(email__in=members_emails.split(',')))
+        huddle_group.members.set(Account.objects.filter(email__in=members_emails.replace(' ', '').split(',')))
 
         # Fetch the user's huddle groups
         huddle_groups = HuddleGroup.objects.filter(members=account)
