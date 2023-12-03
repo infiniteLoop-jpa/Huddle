@@ -22,6 +22,7 @@ def huddle_login(request):
         try:
             # Try to get the user from the database
             user = Account.objects.get(username=username)
+            testpass = user.password
             
             # Check if the provided password matches
             if check_password(password, user.password):
@@ -30,7 +31,7 @@ def huddle_login(request):
                 return redirect('Huddle_app:huddle_home')  # Redirect to the home page after login
             else:
                 # If the password is not valid, display an error message
-                messages.error(request, "Invalid username or password. 1")
+                messages.error(request, "Invalid username or password. 1{}".format(testpass))
                 return redirect('Huddle_app:huddle_login')
         except Account.DoesNotExist:
             # If the user does not exist, display an error message
