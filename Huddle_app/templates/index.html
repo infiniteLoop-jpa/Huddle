@@ -52,6 +52,7 @@
             </div>
             {% for huddle_group in huddle_groups %}
               <div class="column is-one-third">
+                <a>
                 <div class="card">
                   <div class="card-image">
                     <figure class="image">
@@ -59,15 +60,15 @@
                       <img src="{% static 'huddle_default.png' %}" alt="default huddle photo">
                     </figure>
                   </div>
-                  <div class="card-content">
+                  <div class="card-content card-content-size">
                     <div class="media">
                       <div class="media-content">
                         <p class="title is-4">{{ huddle_group.name }}</p>
-                        <p class="subtitle is-6">{{ huddle_group.description }}</p>
                       </div>
                     </div>
                   </div>
                 </div>
+                </a>
               </div>
             {% endfor %}
 
@@ -100,7 +101,7 @@
               <p class="modal-card-title">Create Huddle</p>
               <button class="delete" aria-label="close"></button>
             </header>
-            <form id="createHuddleForm" onsubmit="createHuddle(); return false;">
+            <form id="createHuddleForm" method="post" action="{% url 'Huddle_app:create_huddle' %}">
               <section class="modal-card-body">
                 <div class="field">
                   <label class="label">Name</label>

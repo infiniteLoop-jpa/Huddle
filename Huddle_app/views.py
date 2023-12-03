@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Account
 from django.contrib import messages
 from .models import Account, HuddleGroup
+from django.http import JsonResponse
 
 def huddle_home(request):
     # Get user information from the session
@@ -24,6 +25,36 @@ def huddle_home(request):
         # If the user does not exist, display an error message
         messages.error(request, "User not found.")
         return redirect('Huddle_app:huddle_login')
+
+def create_huddle(request):
+    if request.method == 'POST':
+        # Assuming you have a form with 'huddleName' and 'members' fields
+        huddle_name = request.POST.get('huddleName')
+        members_emails = request.POST.get('members')
+
+        # Get user information from the session
+        user_id = request.session.get('user_id')
+        username = request.session.get('username')
+
+        if not user_id or not username:
+            # If user information is not in the session, redirect to login
+            return JsonResponse({'success': False, 'error': 'User not authenticated.'})
+
+        # Get the user's account
+        account = Account.objects.get(username=username)
+
+        # Create a new HuddleGroup instance and save it to the database
+        huddle_group = HuddleGroup.objects.create(
+            name=huddle_name,
+            members=members_emails,
+        )
+
+        # Add the new huddle group to the user's groups
+        account.groups.add(huddle_group)
+
+        return JsonResponse({'success': True})
+
+    return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
 def huddle_group(request):
     return render(request, 'huddle_page.html')
@@ -54,7 +85,6 @@ def huddle_login(request):
             return redirect('Huddle_app:huddle_login')
 
     return render(request, 'login.html')
-
 
 def huddle_signup(request):
     if request.method == 'POST':
