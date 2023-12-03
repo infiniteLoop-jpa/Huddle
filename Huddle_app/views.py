@@ -46,11 +46,10 @@ def create_huddle(request):
         # Create a new HuddleGroup instance and save it to the database
         huddle_group = HuddleGroup.objects.create(
             name=huddle_name,
-            members=members_emails,
+            # members is a many-to-many field, use set() to add members
         )
-
-        # Add the new huddle group to the user's groups
-        account.groups.add(huddle_group)
+        # Use set() to add members to the many-to-many relationship
+        huddle_group.members.set(Account.objects.filter(email__in=members_emails.split(',')))
 
         return JsonResponse({'success': True})
 
