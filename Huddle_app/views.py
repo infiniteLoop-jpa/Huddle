@@ -51,7 +51,7 @@ def create_huddle(request):
         # Use set() to add members to the many-to-many relationship
         huddle_group.members.set(Account.objects.filter(email__in=members_emails.split(',')))
 
-        return JsonResponse({'success': True})
+        return redirect('Huddle_app:huddle_home')
 
     return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
