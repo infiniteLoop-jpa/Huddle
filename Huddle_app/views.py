@@ -4,19 +4,26 @@ from django.contrib import messages
 from .models import Account, HuddleGroup
 
 def huddle_home(request):
-    # Get the user from the request
-    user = request.user if request.user.is_authenticated else None
+    # Get user information from the session
+    user_id = request.session.get('user_id')
+    username = request.session.get('username')
 
-    if not user:
+    if not user_id or not username:
+        # If user information is not in the session, redirect to login
         return redirect('Huddle_app:huddle_login')
 
-    # Get the user's account
-    account = Account.objects.get(username=user.username)
+    try:
+        # Get the user's account
+        account = Account.objects.get(id=user_id, username=username)
 
-    # Get the user's huddle groups
-    huddle_groups = HuddleGroup.objects.filter(members=account)
+        # Get the user's huddle groups
+        huddle_groups = HuddleGroup.objects.filter(members=account)
 
-    return render(request, 'index.html', {'account': account, 'huddle_groups': huddle_groups})
+        return render(request, 'index.html', {'account': account, 'huddle_groups': huddle_groups})
+    except Account.DoesNotExist:
+        # If the user does not exist, display an error message
+        messages.error(request, "User not found.")
+        return redirect('Huddle_app:huddle_login')
 
 def huddle_group(request):
     return render(request, 'huddle_page.html')
@@ -32,6 +39,10 @@ def huddle_login(request):
             
             # Check if the provided password matches
             if password == user.password:
+                # Set user information in the session
+                request.session['user_id'] = user.id
+                request.session['username'] = user.username
+
                 return redirect('Huddle_app:huddle_home')  # Redirect to the home page after login
             else:
                 # If the password is not valid, display an error message
@@ -43,6 +54,7 @@ def huddle_login(request):
             return redirect('Huddle_app:huddle_login')
 
     return render(request, 'login.html')
+
 
 def huddle_signup(request):
     if request.method == 'POST':
