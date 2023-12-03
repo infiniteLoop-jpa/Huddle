@@ -33,41 +33,46 @@
                         <div id="login-container">
                             <div class="notification is-light">
                                 <p style="text-align: center; font-weight: bold;" class="is-size-5 pb-4">Welcome to Huddle</p>
-                                <!--action=" url 'login' " -->
-                                <form id="login-form" action="" method="post">
+                                <form method="post" action="{% url 'Huddle_app:huddle_login' %}">
                                     {% csrf_token %}
                                     <div class="field">
-                                        <label class="label">Username</label>
+                                        <label class="label" for="id_username">Username</label>
                                         <div class="control has-icons-left has-icons-right">
-                                            <input class="input" type="text" name="username" placeholder="Username" required>
+                                            <input class="input" type="text" name="username" id="id_username" placeholder="Username" required>
                                             <span class="icon is-small is-left">
                                                 <i class="fa fa-user"></i>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="field">
-                                        <label class="label">Password</label>
+                                        <label class="label" for="id_password">Password</label>
                                         <div class="control has-icons-left">
-                                            <input class="input" type="password" name="password" placeholder="Password" required>
+                                            <input class="input" type="password" name="password" id="id_password" placeholder="Password" required>
                                             <span class="icon is-small is-left">
                                                 <i class="fa fa-lock"></i>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="pb-3" style="text-align: center;">
-                                        <!-- href=" url 'signup' "-->
-                                        <a href="/huddle/signup/">Don't have an account? Sign up</a>
+                                        <a href="{% url 'Huddle_app:huddle_signup' %}">Don't have an account? Sign up</a>
                                     </div>
                                     <div class="field">
                                         <div class="control" style="text-align: center;">
-                                            <button type="submit" class="button is-info">
-                                                Log in
-                                            </button>
+                                            <button type="submit" class="button is-info">Log in</button>
                                         </div>
                                     </div>
-                                </form>
+                                </form>                                
                             </div>
                         </div>
+                        {% if messages %}
+                        <div class="messages">
+                            {% for message in messages %}
+                            <div class="{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
                     </div>
                 </section>
             </div>

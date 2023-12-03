@@ -20,3 +20,10 @@ class Task(models.Model):
     def __str__(self):
         return self.name
     
+class HuddleGroup(models.Model):
+    name = models.CharField(max_length=100)
+    members = models.ManyToManyField(Account, related_name='huddle_groups')
+    # Add other fields as needed
+
+    def __str__(self):
+        return self.name

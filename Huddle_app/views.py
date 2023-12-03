@@ -1,16 +1,88 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from .models import Account
 from django.contrib import messages
-# Create your views here.
+from .models import Account, HuddleGroup
+from django.http import JsonResponse
 
 def huddle_home(request):
-    return render(request, 'index.html')
+    # Get user information from the session
+    user_id = request.session.get('user_id')
+    username = request.session.get('username')
+
+    if not user_id or not username:
+        # If user information is not in the session, redirect to login
+        return redirect('Huddle_app:huddle_login')
+
+    try:
+        # Get the user's account
+        account = Account.objects.get(id=user_id, username=username)
+
+        # Get the user's huddle groups
+        huddle_groups = HuddleGroup.objects.filter(members=account)
+
+        return render(request, 'index.html', {'account': account, 'huddle_groups': huddle_groups})
+    except Account.DoesNotExist:
+        # If the user does not exist, display an error message
+        messages.error(request, "User not found.")
+        return redirect('Huddle_app:huddle_login')
+
+def create_huddle(request):
+    if request.method == 'POST':
+        # Assuming you have a form with 'huddleName' and 'members' fields
+        huddle_name = request.POST.get('huddleName')
+        members_emails = request.POST.get('members')
+
+        # Get user information from the session
+        user_id = request.session.get('user_id')
+        username = request.session.get('username')
+
+        if not user_id or not username:
+            # If user information is not in the session, redirect to login
+            return JsonResponse({'success': False, 'error': 'User not authenticated.'})
+
+        # Get the user's account
+        account = Account.objects.get(username=username)
+
+        # Create a new HuddleGroup instance and save it to the database
+        huddle_group = HuddleGroup.objects.create(
+            name=huddle_name,
+            # members is a many-to-many field, use set() to add members
+        )
+        # Use set() to add members to the many-to-many relationship
+        huddle_group.members.set(Account.objects.filter(email__in=members_emails.split(',')))
+
+        return redirect('Huddle_app:huddle_home')
+
+    return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
 def huddle_group(request):
     return render(request, 'huddle_page.html')
 
 def huddle_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        try:
+            # Try to get the user from the database
+            user = Account.objects.get(username=username)
+            
+            # Check if the provided password matches
+            if password == user.password:
+                # Set user information in the session
+                request.session['user_id'] = user.id
+                request.session['username'] = user.username
+
+                return redirect('Huddle_app:huddle_home')  # Redirect to the home page after login
+            else:
+                # If the password is not valid, display an error message
+                messages.error(request, "Invalid username or password.")
+                return redirect('Huddle_app:huddle_login')
+        except Account.DoesNotExist:
+            # If the user does not exist, display an error message
+            messages.error(request, "Invalid username or password.")
+            return redirect('Huddle_app:huddle_login')
+
     return render(request, 'login.html')
 
 def huddle_signup(request):
