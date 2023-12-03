@@ -36,6 +36,8 @@ def create_huddle(request):
         user_id = request.session.get('user_id')
         username = request.session.get('username')
 
+        members_emails = members_emails + ', ' + username
+
         if not user_id or not username:
             # If user information is not in the session, redirect to login
             return JsonResponse({'success': False, 'error': 'User not authenticated.'})
