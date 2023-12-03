@@ -30,11 +30,11 @@ def huddle_login(request):
                 return redirect('Huddle_app:huddle_home')  # Redirect to the home page after login
             else:
                 # If the password is not valid, display an error message
-                messages.error(request, "Invalid username or password.")
+                messages.error(request, "Invalid username or password. 1")
                 return redirect('Huddle_app:huddle_login')
         except Account.DoesNotExist:
             # If the user does not exist, display an error message
-            messages.error(request, "Invalid username or password.")
+            messages.error(request, "Invalid username or password. 2")
             return redirect('Huddle_app:huddle_login')
 
     return render(request, 'login.html')
