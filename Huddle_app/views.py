@@ -1,9 +1,22 @@
 from django.shortcuts import render, redirect
 from .models import Account
 from django.contrib import messages
+from .models import Account, HuddleGroup
 
 def huddle_home(request):
-    return render(request, 'index.html')
+    # Get the user from the request
+    user = request.user if request.user.is_authenticated else None
+
+    if not user:
+        return redirect('Huddle_app:huddle_login')
+
+    # Get the user's account
+    account = Account.objects.get(username=user.username)
+
+    # Get the user's huddle groups
+    huddle_groups = HuddleGroup.objects.filter(members=account)
+
+    return render(request, 'index.html', {'account': account, 'huddle_groups': huddle_groups})
 
 def huddle_group(request):
     return render(request, 'huddle_page.html')

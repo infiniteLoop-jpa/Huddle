@@ -28,10 +28,10 @@
                 </a>
                 <div class="navbar-dropdown is-right">
                   <div class="navbar-item">
-                      <strong>UserName</strong>
+                    <strong>{{ account.username }}</strong>
                   </div>
                   <hr class="navbar-divider">
-                  <a class="navbar-item">
+                  <a class="navbar-item" href="/huddle/login">
                       <p class="has-text-danger">Logout</p>
                   </a>
                 </div>
@@ -50,6 +50,27 @@
             <div class="column is-one-third">
               <button class="add-huddle-button is-outlined js-modal-trigger" data-target="modal-create-huddle">+</button>
             </div>
+            {% for huddle_group in huddle_groups %}
+              <div class="column is-one-third">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image">
+                      <!-- You might need to adjust this based on your HuddleGroup model -->
+                      <img src="{% static 'huddle_default.png' %}" alt="default huddle photo">
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                        <p class="title is-4">{{ huddle_group.name }}</p>
+                        <p class="subtitle is-6">{{ huddle_group.description }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+
             <!-- Hardcoded example of huddle card -->
             <div class="column is-one-third">
               <div class="card">
