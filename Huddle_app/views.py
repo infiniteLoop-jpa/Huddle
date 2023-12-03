@@ -1,11 +1,6 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.db import IntegrityError
 from .models import Account
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.views import LoginView
-from django.urls import reverse_lazy
 
 def huddle_home(request):
     return render(request, 'index.html')
@@ -27,11 +22,11 @@ def huddle_login(request):
                 return redirect('Huddle_app:huddle_home')  # Redirect to the home page after login
             else:
                 # If the password is not valid, display an error message
-                messages.error(request, "Invalid username or password. 1")
+                messages.error(request, "Invalid username or password.")
                 return redirect('Huddle_app:huddle_login')
         except Account.DoesNotExist:
             # If the user does not exist, display an error message
-            messages.error(request, "Invalid username or password. 2")
+            messages.error(request, "Invalid username or password.")
             return redirect('Huddle_app:huddle_login')
 
     return render(request, 'login.html')
