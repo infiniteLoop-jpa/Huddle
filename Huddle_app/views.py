@@ -36,7 +36,7 @@ def create_huddle(request):
         user_id = request.session.get('user_id')
         username = request.session.get('username')
 
-        members_emails = members_emails + ', ' + username
+        
 
         if not user_id or not username:
             # If user information is not in the session, redirect to login
@@ -44,7 +44,7 @@ def create_huddle(request):
 
         # Get the user's account
         account = Account.objects.get(username=username)
-
+        members_emails = members_emails + ', ' + account.email
         # Create a new HuddleGroup instance and save it to the database
         huddle_group = HuddleGroup.objects.create(
             name=huddle_name,
