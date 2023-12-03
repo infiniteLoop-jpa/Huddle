@@ -9,5 +9,4 @@ urlpatterns = [
     path('huddle/login/', views.huddle_login, name='huddle_login'),
     path('huddle/signup/', views.huddle_signup, name='huddle_signup'),
     path('create_huddle/', views.create_huddle, name='create_huddle'),
-
 ]
