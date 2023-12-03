@@ -46,12 +46,15 @@ def create_huddle(request):
         # Create a new HuddleGroup instance and save it to the database
         huddle_group = HuddleGroup.objects.create(
             name=huddle_name,
-            # members is a many-to-many field, use set() to add members
         )
         # Use set() to add members to the many-to-many relationship
         huddle_group.members.set(Account.objects.filter(email__in=members_emails.split(',')))
 
-        return redirect('Huddle_app:huddle_home')
+        # Fetch the user's huddle groups
+        huddle_groups = HuddleGroup.objects.filter(members=account)
+
+        # Pass the user's huddle groups to the template
+        return render(request, 'index.html', {'account': account, 'huddle_groups': huddle_groups, 'success': True})
 
     return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
