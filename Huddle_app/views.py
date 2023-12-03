@@ -6,7 +6,6 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
-from django.contrib.auth.hashers import check_password
 
 def huddle_home(request):
     return render(request, 'index.html')
@@ -22,16 +21,13 @@ def huddle_login(request):
         try:
             # Try to get the user from the database
             user = Account.objects.get(username=username)
-            testpass = user.password
             
             # Check if the provided password matches
-            if check_password(password, user.password):
-                # If the user is valid, log them in
-                login(request, user)
+            if password == user.password:
                 return redirect('Huddle_app:huddle_home')  # Redirect to the home page after login
             else:
                 # If the password is not valid, display an error message
-                messages.error(request, "Invalid username or password. 1{}".format(testpass))
+                messages.error(request, "Invalid username or password. 1")
                 return redirect('Huddle_app:huddle_login')
         except Account.DoesNotExist:
             # If the user does not exist, display an error message
