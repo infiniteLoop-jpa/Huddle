@@ -2,5 +2,5 @@
 Huddle/__pycache__
 Huddle_app/__pycache__
 huddle_env/lib
-.DS_Store/
+.DS_Store
 Huddle_app/migrations
