@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Account
 from django.contrib import messages
 from .models import Account, HuddleGroup, Task
@@ -40,27 +40,48 @@ def create_huddle(request):
         user_id = request.session.get('user_id')
         username = request.session.get('username')
 
+        
+
         if not user_id or not username:
             # If user information is not in the session, redirect to login
             return JsonResponse({'success': False, 'error': 'User not authenticated.'})
 
         # Get the user's account
         account = Account.objects.get(username=username)
-
+        members_emails = members_emails + ', ' + account.email
         # Create a new HuddleGroup instance and save it to the database
         huddle_group = HuddleGroup.objects.create(
             name=huddle_name,
-            # members is a many-to-many field, use set() to add members
         )
         # Use set() to add members to the many-to-many relationship
-        huddle_group.members.set(Account.objects.filter(email__in=members_emails.split(',')))
+        huddle_group.members.set(Account.objects.filter(email__in=members_emails.replace(' ', '').split(',')))
 
+        # Fetch the user's huddle groups
+        huddle_groups = HuddleGroup.objects.filter(members=account)
+
+        # Pass the user's huddle groups to the template
         return redirect('Huddle_app:huddle_home')
 
     return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
-def huddle_group(request):
-    return render(request, 'huddle_page.html')
+def huddle_group(request, huddle_group_id):
+    # Get user information from the session
+    user_id = request.session.get('user_id')
+    username = request.session.get('username')
+
+    if not user_id or not username:
+        # If user information is not in the session, redirect to login
+        return redirect('Huddle_app:huddle_login')
+
+    try:
+        # Get the user's huddle groups
+        huddle_group = get_object_or_404(HuddleGroup, id=huddle_group_id)
+
+        return render(request, 'huddle_page.html', {'huddle_group': huddle_group})
+    except Account.DoesNotExist:
+        # If the user does not exist, display an error message
+        messages.error(request, "User not found.")
+        return redirect('Huddle_app:huddle_login')
 
 def huddle_login(request):
     if request.method == 'POST':
