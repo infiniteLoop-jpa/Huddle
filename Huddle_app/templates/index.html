@@ -45,11 +45,8 @@
           <!-- all huddle groups displayed (3 per row) -->
           <p class="tab-titles pt-4">Huddle Groups</p>
           <hr class="hr">
+          <button class="button is-info is-rounded is-outlined js-modal-trigger" data-target="modal-create-huddle">+</button>
           <div class="columns is-multiline is-vcentered pt-3" id="cardContainer">
-            <!-- button to create new huddle -->
-            <div class="column is-one-third">
-              <button class="add-huddle-button is-outlined js-modal-trigger" data-target="modal-create-huddle">+</button>
-            </div>
             {% for huddle_group in huddle_groups %}
               <div class="column is-one-third">
                 <a>
@@ -107,13 +104,13 @@
                 <div class="field">
                   <label class="label">Name</label>
                   <div class="control">
-                    <input class="input" type="text" placeholder="Los Broncos" name="huddleName" id="huddleName">
+                    <input class="input" type="text" placeholder="Los Broncos" name="huddleName" id="huddleName" required>
                   </div>
                 </div>
                 <div class="field">
                   <label class="label">Members</label>
                   <div class="control">
-                    <input class="input" type="text" placeholder="Username or email address" name="members" id="members">
+                    <input class="input" type="text" placeholder="Username or email address" name="members" id="members" required>
                   </div>
                 </div>
               </section>

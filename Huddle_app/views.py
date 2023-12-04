@@ -56,12 +56,31 @@ def create_huddle(request):
         huddle_groups = HuddleGroup.objects.filter(members=account)
 
         # Pass the user's huddle groups to the template
-        return render(request, 'index.html', {'account': account, 'huddle_groups': huddle_groups, 'success': True})
+        return redirect('Huddle_app:huddle_home')
 
     return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
 def huddle_group(request):
-    return render(request, 'huddle_page.html')
+    # Get user information from the session
+    user_id = request.session.get('user_id')
+    username = request.session.get('username')
+
+    if not user_id or not username:
+        # If user information is not in the session, redirect to login
+        return redirect('Huddle_app:huddle_login')
+
+    try:
+        # Get the user's account
+        account = Account.objects.get(id=user_id, username=username)
+
+        # Get the user's huddle groups
+        huddle_groups = HuddleGroup.objects.filter(members=account)
+
+        return render(request, 'index.html', {'account': account, 'huddle_groups': huddle_groups})
+    except Account.DoesNotExist:
+        # If the user does not exist, display an error message
+        messages.error(request, "User not found.")
+        return redirect('Huddle_app:huddle_login')
 
 def huddle_login(request):
     if request.method == 'POST':

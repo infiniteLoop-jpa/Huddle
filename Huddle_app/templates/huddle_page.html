@@ -27,22 +27,22 @@
                     </a>
                     <div class="navbar-dropdown is-right">
                       <div class="navbar-item">
-                          <strong>UserName</strong>
+                        <strong>{{ account.username }}</strong>
                       </div>
                       <hr class="navbar-divider">
-                      <a class="navbar-item">
+                      <a class="navbar-item" href="/huddle/login">
                           <p class="has-text-danger">Logout</p>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-          </nav>
+        </nav>
 
         <nav class="navbar is-info" role="navigation" aria-label="group navigation" id="groupNavigation">
             <div class="navbar-brand">
-                <a class="navbar-item huddle-name px-5" href="">
-                    "Huddle Name Goes Here"
+                <a class="navbar-item huddle-name px-5">
+                    {{ huddle_group.name }}
                 </a>
           
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarHuddleGroup">
