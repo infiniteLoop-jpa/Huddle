@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Account
 from django.contrib import messages
 from .models import Account, HuddleGroup
@@ -60,7 +60,7 @@ def create_huddle(request):
 
     return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
-def huddle_group(request):
+def huddle_group(request, huddle_group_id):
     # Get user information from the session
     user_id = request.session.get('user_id')
     username = request.session.get('username')
@@ -70,13 +70,10 @@ def huddle_group(request):
         return redirect('Huddle_app:huddle_login')
 
     try:
-        # Get the user's account
-        account = Account.objects.get(id=user_id, username=username)
-
         # Get the user's huddle groups
-        huddle_groups = HuddleGroup.objects.filter(members=account)
+        huddle_group = get_object_or_404(HuddleGroup, id=huddle_group_id)
 
-        return render(request, 'index.html', {'account': account, 'huddle_groups': huddle_groups})
+        return render(request, 'huddle_page.html', {'huddle_group': huddle_group})
     except Account.DoesNotExist:
         # If the user does not exist, display an error message
         messages.error(request, "User not found.")

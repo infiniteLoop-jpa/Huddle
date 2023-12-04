@@ -48,8 +48,8 @@
           <button class="button is-info is-rounded is-outlined js-modal-trigger" data-target="modal-create-huddle">+</button>
           <div class="columns is-multiline is-vcentered pt-3" id="cardContainer">
             {% for huddle_group in huddle_groups %}
+            <a href="{% url 'Huddle_app:huddle_group' huddle_group.id %}">
               <div class="column is-one-third">
-                <a>
                 <div class="card">
                   <div class="card-image">
                     <figure class="image">
@@ -65,8 +65,8 @@
                     </div>
                   </div>
                 </div>
-                </a>
               </div>
+            </a>  
             {% endfor %}
 
             <!-- Hardcoded example of huddle card -->
