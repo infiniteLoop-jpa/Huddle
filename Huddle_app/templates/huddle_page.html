@@ -173,7 +173,8 @@
                               <p class="modal-card-title">Add Task</p>
                               <button class="delete" aria-label="close"></button>
                           </header>
-                          <form id="addTaskForm" onsubmit="addTask(event); return false;">
+                          <form action="{% url 'save_task' %}" method="post" onsubmit="addTask(event); return false;">
+                            {% csrf_token %}
                               <section class="modal-card-body">
                                   <div class="field">
                                       <label class="label">Task Name</label>

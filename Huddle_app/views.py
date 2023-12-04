@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
 from .models import Account
 from django.contrib import messages
-from .models import Account, HuddleGroup
+from .models import Account, HuddleGroup, Task
 from django.http import JsonResponse
+from django.urls import reverse
+from django.http import HttpResponseRedirect
+
+
 
 def huddle_home(request):
     # Get user information from the session
@@ -121,3 +125,23 @@ def huddle_signup(request):
         return redirect('Huddle_app:huddle_login')
 
     return render(request, 'signup.html')
+
+
+def save_task(request):
+    if request.method == 'POST':
+        # Extract task information from POST request
+        task_name = request.POST.get('task_name')
+        task_description = request.POST.get('task_description')
+        people_assigned = request.POST.get('people_assigned')
+        deadline = request.POST.get('deadline')
+
+        # Create and save new task
+        new_task = Task(name=task_name, description=task_description, 
+                        people_assigned=people_assigned, deadline=deadline)
+        new_task.save()
+
+        # Redirect to a success page or back to the form
+        return HttpResponseRedirect(reverse('huddle_page.html'))
+    else:
+        # Handle non-POST request here (e.g., show an error or redirect)
+        return render(request, 'your_form_template.html', {'message': 'Please submit the form.'})
